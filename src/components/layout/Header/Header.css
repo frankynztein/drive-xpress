@@ -1,0 +1,57 @@
+/* Mobile hasta 767px */
+.header-wrapper {
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.3);
+  position: fixed;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.header-logo {
+  width: 100px;
+}
+
+.header_nav ul {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.header-button {
+  padding: 10px;
+  border: 1px solid #D32F2F;
+  border-radius: 5px;
+}
+
+.sign-in {
+  background-color: #D32F2F;
+  color: #fff;
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) {
+  .header-logo {
+    width: 120px;
+  }
+
+  .header_nav ul {
+    column-gap: 20px;
+  }
+}
+
+/* Desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+
+}
