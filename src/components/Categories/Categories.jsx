@@ -1,9 +1,11 @@
+import { CategoryCard } from '../CategoryCard/CategoryCard';
 import './Categories.css';
 
 const Categories = () => {
   return (
     <>
-      <h1>Las categorias van here too</h1>
+      <h2>Categorías</h2>
+      <CategoryCard />
     </>
   )
 }
