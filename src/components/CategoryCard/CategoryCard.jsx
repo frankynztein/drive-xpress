@@ -1,5 +1,4 @@
-import { Carousel } from 'react-bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Carousel } from 'react-bootstrap';
 import './CategoryCard.css';
 import CocheSedan from '../../assets/coche-sedan.png';
 import CocheCompacto from '../../assets/coche-compacto.png';
@@ -73,8 +72,8 @@ const CategoryCard = () => {
         </div>
       </div>
 
-      <Carousel>
-        <Carousel.Item className='card-wrapper'>
+      {/* <Carousel>
+        <Carousel.Item className='card-wrapper1'>
           <div className='card'>
             <div className='card-img'>
               <img src={CocheSedan} alt="Coche sedán" />
@@ -100,7 +99,7 @@ const CategoryCard = () => {
             </div>
           </div>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
     </>
   )
 }
