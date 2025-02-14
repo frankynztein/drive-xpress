@@ -22,7 +22,7 @@ const SearchBar = () => {
             <input type="time" id="dropoff-time" name="dropoff-time"/>
           </div>
 
-          <button type="submit">Buscar</button>
+          <button className='button primary-button' type="submit">Buscar</button>
         </form>
       </div>
     </>
