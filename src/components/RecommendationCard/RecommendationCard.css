@@ -1,0 +1,44 @@
+/* Mobile hasta 767px */
+  .recomm-card-wrapper {
+    background-color: #fff;
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px 10px;
+  }
+
+  .recomm-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    width: 250px;
+    flex-grow: 1;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recomm-card-img img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .recomm-card-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) {
+
+}
+
+/* Desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+
+}
