@@ -5,6 +5,8 @@ import { MainLayout } from '../layouts/MainLayout';
 import { Home } from '../pages/Home/Home';
 import { Admin } from '../pages/Admin/Admin';
 import { AddCar } from '../pages/AddCar/AddCar';
+import { ProductList } from '../pages/ProductList/ProductList';
+import { ProductDetail } from '../pages/ProductDetail/ProductDetail';
 // import Login from '../pages/Login';
 // import CarList from '../pages/CarList';
 // import Reservation from '../pages/Reservation';
@@ -18,6 +20,8 @@ const AppRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/administracion" element={<Admin />} />
           <Route path="/agregar-carro" element={<AddCar />} />
+          <Route path="/lista-de-carros" element={<ProductList />} />
+          <Route path="/detalles-del-carro" element={<ProductDetail />} />
           {/* Ejemplo de otras rutas que podrías necesitar:
           <Route path="/login" element={<Login />} />
           <Route path="/cars" element={<CarList />} />

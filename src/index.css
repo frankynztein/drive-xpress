@@ -25,6 +25,7 @@ h2 {
 p {
   font-size: 18px;
   font-weight: 400;
+  margin: 0;
 }
 
 .main {
@@ -61,5 +62,14 @@ a {
 }
 
 .secondary-button {
+  background-color: #212121;
+  color: #fff;
+}
+
+.tertiary-button {
+  background-color: #BDBDBD;
+}
+
+.no-background-button {
   outline: 1px solid #D32F2F;
 }

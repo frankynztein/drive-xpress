@@ -1,10 +1,10 @@
 // import { Carousel } from 'react-bootstrap';
 import './CategoryCard.css';
-import CocheSedan from '../../assets/coche-sedan.png';
-import CocheCompacto from '../../assets/coche-compacto.png';
-import CocheConvertible from '../../assets/coche-convertible.png';
-import CocheSUV from '../../assets/coche-suv.png';
-import CocheHibrido from '../../assets/coche-hibrido.png';
+import CocheSedan from '../../assets/peugeot-208.png';
+import CocheCompacto from '../../assets/peugeot-308.png';
+import CocheCoupe from '../../assets/audi-a5.png';
+import CocheSUV from '../../assets/peugeot-2008.png';
+import CocheElectrico from '../../assets/mb-eqs.png';
 
 const CategoryCard = () => {
   return (
@@ -34,13 +34,13 @@ const CategoryCard = () => {
             <button className='button primary-button'>Ver más</button>
           </div>
         </div>
-        {/* Convertible */}
+        {/* Coupe */}
         <div className='card'>
           <div className='card-img'>
-            <img src={CocheConvertible} alt="Coche compacto" />
+            <img src={CocheCoupe} alt="Coche compacto" />
           </div>
           <div className='card-info'>
-            <h3>Convertible</h3>
+            <h3>Coupé</h3>
           </div>
           <div className='card-button'>
             <button className='button primary-button'>Ver más</button>
@@ -58,13 +58,13 @@ const CategoryCard = () => {
             <button className='button primary-button'>Ver más</button>
           </div>
         </div>
-        {/* Híbrido */}
+        {/* Eléctrico */}
         <div className='card'>
           <div className='card-img'>
-            <img src={CocheHibrido} alt="Coche compacto" />
+            <img src={CocheElectrico} alt="Coche compacto" />
           </div>
           <div className='card-info'>
-            <h3>Híbrido</h3>
+            <h3>Eléctrico</h3>
           </div>
           <div className='card-button'>
             <button className='button primary-button'>Ver más</button>
