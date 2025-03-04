@@ -1,0 +1,50 @@
+
+/* Mobile hasta 767px */
+
+.sidebar {
+  display: none;
+}
+
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) {
+
+}
+
+/* Desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+  .sidebar {
+    width: 180px;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar elementos verticalmente */
+    align-items: center;
+    height: 100%; /* Ocupar toda la altura del sidebar */
+    background: #D32F2F;
+    width: 100%;
+    margin-top: 0; /* Eliminar margen negativo */
+  }
+  
+  .sidebar nav a {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .sidebar nav img {
+    width: 40px;
+  }
+  
+  .sidebar nav .button {
+    background-color: #fff;
+  }
+}

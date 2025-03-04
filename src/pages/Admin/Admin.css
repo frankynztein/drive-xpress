@@ -1,7 +1,33 @@
-ol {
-  padding-left: 20px;
+/* Mobile hasta 767px */
+.admin-no-mobile {
+  display: block;
 }
 
-ol li {
-list-style-type: decimal;
+.admin-content {
+  display: none;
+}
+
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) {
+
+}
+
+/* Desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+  ol {
+    padding-left: 20px;
+  }
+  
+  ol li {
+    list-style-type: decimal;
+  }
+
+  .admin-no-mobile {
+    display: none;
+  }
+
+  .admin-content {
+    display: block;
+  }
 }

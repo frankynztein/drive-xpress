@@ -35,6 +35,10 @@ p {
   margin-bottom: 200px;
 }
 
+.admin {
+  margin-left: 180px;
+}
+
 ul, ol {
   padding: 0;
 }

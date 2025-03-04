@@ -2,9 +2,9 @@
 import './CategoryCard.css';
 import CocheSedan from '../../assets/peugeot-208.png';
 import CocheCompacto from '../../assets/peugeot-308.png';
-import CocheCoupe from '../../assets/audi-a5.png';
+import CocheCoupe from '../../assets/audi-a5-sportback.png';
 import CocheSUV from '../../assets/peugeot-2008.png';
-import CocheElectrico from '../../assets/mb-eqs.png';
+import CocheFamiliar from '../../assets/peugeot-2008.png';
 
 const CategoryCard = () => {
   return (
@@ -61,10 +61,10 @@ const CategoryCard = () => {
         {/* Eléctrico */}
         <div className='card'>
           <div className='card-img'>
-            <img src={CocheElectrico} alt="Coche compacto" />
+            <img src={CocheFamiliar} alt="Coche compacto" />
           </div>
           <div className='card-info'>
-            <h3>Eléctrico</h3>
+            <h3>Familiar</h3>
           </div>
           <div className='card-button'>
             <button className='button primary-button'>Ver más</button>

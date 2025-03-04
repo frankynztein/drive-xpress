@@ -3,3 +3,14 @@
   align-items: center;
   gap: 10px;
 }
+
+.product-info {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-gallery img {
+  width: 50%;
+}

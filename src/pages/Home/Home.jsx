@@ -1,3 +1,4 @@
+import { AllProducts } from "../../components/AllProducts/AllProducts";
 import { Categories } from "../../components/Categories/Categories";
 import { Hero } from "../../components/Hero/Hero";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
@@ -10,6 +11,7 @@ const Home = () => {
       <SearchBar />
       <Categories />
       <Recommendations />
+      <AllProducts />
     </>
   )
 }

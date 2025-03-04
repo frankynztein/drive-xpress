@@ -1,217 +1,83 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './RecommendationCard.css';
-import Peugeot308 from '../../assets/peugeot-308.png';
-import Peugeot208 from '../../assets/peugeot-208.png';
-import Peugeot2008 from '../../assets/peugeot-2008.png';
-import Bmw1 from '../../assets/bmw-1.png';
-import AudiQ5 from '../../assets/audi-q5.png';
 
 const RecommendationCard = () => {
-  return (
-    <>
-      <div className='recomm-card-wrapper'>
-        {/* Car 1 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot308} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 308</h3>
-              <p><span>Sedán</span> <span>manual</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+    const [recommendations, setRecommendations] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 2 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot208} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 208</h3>
-              <p><span>Sedán</span> <span>manual</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+    useEffect(() => {
+        const fetchRecommendations = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/cars');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 3 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot2008} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 2008</h3>
-              <p><span>SUV</span> <span>manual</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+                // Obtener elementos aleatorios de array
+                const getRandom = (arr, n) => {
+                    let result = new Array(n);
+                    let len = arr.length;
+                    let taken = new Array(len);
+                    if (n > len)
+                        throw new Error("getRandom: more elements taken than available");
+                    while (n--) {
+                        let x = Math.floor(Math.random() * len);
+                        result[n] = arr[x in taken ? taken[x] : x];
+                        taken[x] = --len in taken ? taken[len] : len;
+                    }
+                    return result;
+                }
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 4 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Bmw1} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>BMW Serie 1</h3>
-              <p><span>Sedán</span> <span>automático</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+                // 10 recomendaciones aleatorias
+                const randomRecommendations = getRandom(data, Math.min(10, data.length));
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 5 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={AudiQ5} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Audi Q5</h3>
-              <p><span>SUV</span> <span>automático</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+                setRecommendations(randomRecommendations);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        };
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 1 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot308} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 308</h3>
-              <p><span>Sedán</span> <span>manual</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+        fetchRecommendations();
+    }, []);
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 2 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot208} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 208</h3>
-              <p><span>Sedán</span> <span>manual</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
+    if (loading) return <div>Cargando recomendaciones...</div>;
+    if (error) return <div>Error: {error}</div>;
 
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 3 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Peugeot2008} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Peugeot 2008</h3>
-              <p><span>SUV</span> <span>manual</span></p>
+    return (
+        <>
+            <div className='recomm-card-wrapper'>
+                {recommendations.map((car) => {
+                    return (
+                        <div className='recomm-card' key={car.id}>
+                            <div className='recomm-card-img'>
+                                <img src={`http://localhost:8080/uploads/${car.mainPhotoUrl}`} alt={car.model} />
+                            </div>
+                            <div className='recomm-card-info'>
+                                <div className='recomm-card-info--car'>
+                                    <h3>{car.model}</h3>
+                                    <p><span>{car.category}</span> <span>{car.transmission}</span></p>
+                                </div>
+                                <div className='recomm-card-info--rent'>
+                                    <p>Kilómetros ilimitados disponibles</p>
+                                    <p><span>$ {car.dailyRentalCost}/día</span></p>
+                                </div>
+                            </div>
+                            <div className='recomm-card-button'>
+                                <Link to={`/detalles/${car.model}`}>
+                                    <button className='button primary-button'>Seleccionar</button>
+                                </Link>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
-
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 4 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={Bmw1} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>BMW Serie 1</h3>
-              <p><span>Sedán</span> <span>automático</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
-
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-        {/* Car 5 */}
-        <div className='recomm-card'>
-          <div className='recomm-card-img'>
-            <img src={AudiQ5} alt="Coche sedán" />
-          </div>
-          <div className='recomm-card-info'>
-            <div className='recomm-card-info--car'>
-              <h3>Audi Q5</h3>
-              <p><span>SUV</span> <span>automático</span></p>
-            </div>
-            <div className='recomm-card-info--rent'>
-              <p>Kilómetros ilimitados disponibles</p>
-              <p><span>$ 30,50/día</span> <span>Total: $ 150</span></p>
-            </div>
-
-          </div>
-          <div className='recomm-card-button'>
-            <button className='button primary-button'>Seleccionar</button>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+        </>
+    );
 }
 
 export { RecommendationCard };

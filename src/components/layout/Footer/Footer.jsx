@@ -23,7 +23,6 @@ const Footer = () => {
               <img src={facebook} alt="" />
             </Link>
           </div>
-
         </footer>
       </div>
     </>
