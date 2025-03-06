@@ -16,8 +16,8 @@ const AppRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/administracion" element={<AdminLayout />}>
             <Route index element={<Admin />} />
-            <Route path="agregar-carro" element={<AddCar />} />
-            <Route path="lista-de-carros" element={<ProductList />} />
+            <Route path="agregar-coche" element={<AddCar />} />
+            <Route path="lista-de-coches" element={<ProductList />} />
           </Route>
           <Route path="/detalles/:model" element={<ProductDetail />} />
         </Routes>

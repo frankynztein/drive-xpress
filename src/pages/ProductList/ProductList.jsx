@@ -56,55 +56,57 @@ const ProductList = () => {
 
   return (
     <>
-      <h3>Listado de autos</h3>
-
-      <div>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Modelo</th>
-              <th>Alquiler por día</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((car) => (
-              <tr key={car.id}>
-                <td>{car.id}</td>
-                <td>{car.model}</td>
-                <td>${car.dailyRentalCost}</td>
-                <td>
-                  <button className='button tertiary-button mx-2'>Editar</button>
-                  <button className='button secondary-button' onClick={() => handleDelete(car)}>Eliminar</button>
-                </td>
+      <div className='mt-50 mr-50 mb-200 ml-50'>
+        <h3>Listado de coches</h3>
+        {/* Tabla de productos */}
+        <div className='table-container'>
+          <Table striped bordered hover style={{ display: 'table', width: '100%' }}>
+            <thead style={{ position: 'sticky', top: 0, backgroundColor: 'white', zIndex: 1, boxShadow: '0 0px 6px rgba(0,0,0,0.1)' }}>
+              <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Alquiler por día</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {data.map((car) => (
+                <tr key={car.id}>
+                  <td>{car.id}</td>
+                  <td>{car.model}</td>
+                  <td>${car.dailyRentalCost}</td>
+                  <td>
+                    <button className="button tertiary-button mx-2">Editar</button>
+                    <button className="button secondary-button" onClick={() => handleDelete(car)}>Eliminar</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Confirmar eliminación</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {carToDelete ? (
+              `¿Está seguro de que desea eliminar el coche "${carToDelete.model}"?`
+            ) : (
+              'Seleccione un coche para eliminar'
+            )}
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="danger" onClick={confirmDelete}>
+              Eliminar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
-
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirmar eliminación</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {carToDelete ? (
-            `¿Está seguro de que desea eliminar el carro "${carToDelete.model}"?`
-          ) : (
-            'Seleccione un carro para eliminar'
-          )}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancelar
-          </Button>
-          <Button variant="danger" onClick={confirmDelete}>
-            Eliminar
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </>
   );
 }

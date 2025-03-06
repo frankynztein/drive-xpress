@@ -1,0 +1,8 @@
+.admin-layout {
+  display: flex;
+  /* height: 90vh; */
+}
+
+.admin-inner-pages {
+  flex-grow: 1;
+}

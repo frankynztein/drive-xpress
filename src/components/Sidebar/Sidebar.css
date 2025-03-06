@@ -14,11 +14,11 @@
 /* Desktop (1025px en adelante) */
 @media (min-width: 1025px) {
   .sidebar {
-    width: 180px;
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    width: 120px;
+    /* position: fixed; */
+    /* height: 100vh; */
+    /* top: 0; */
+    /* left: 0; */
     display: flex;
     flex-direction: column;
   }
@@ -26,12 +26,13 @@
   .sidebar nav {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrar elementos verticalmente */
+    /* justify-content: center; */
     align-items: center;
-    height: 100%; /* Ocupar toda la altura del sidebar */
+    height: 100%;
     background: #D32F2F;
     width: 100%;
-    margin-top: 0; /* Eliminar margen negativo */
+    margin-top: 0;
+    padding-top: 40px;
   }
   
   .sidebar nav a {

@@ -1,3 +1,7 @@
+// #ToDo: 
+// - Que el card completo lleve a los detalles del coche, no solo el botón
+// - De acuerdo a las user stories, el máximo de productos a mostrar debe ser 10, por lo tanto, puden ser menos porque 10 parece ser mucho
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './RecommendationCard.css';

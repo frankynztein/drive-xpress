@@ -1,3 +1,7 @@
+// #ToDo:
+// - Que el card lleve a los detalles del coche
+// - Mejorar el aspecto de esta sección o del card
+
 import { useState, useEffect } from 'react';
 import './AllProducts.css';
 

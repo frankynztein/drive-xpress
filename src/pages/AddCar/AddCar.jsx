@@ -1,3 +1,7 @@
+// #ToDo:
+// - Que se borre la info en el input de imágenes al enviar los datos del coche
+// - Agregar modal o cambiar de ubicación los mensajes de error o éxito del formulario
+
 import './AddCar.css';
 import { useState } from 'react';
 import axios from 'axios';
@@ -65,100 +69,102 @@ const AddCar = () => {
 
   return (
     <>
-      <h1>Add car</h1>
-      {message && <div className="message">{message}</div>}
-      <div className='add-car-form'>
-        <form onSubmit={handleSubmit}>
-          <div className='add-car-input'>
-            <label htmlFor="model">Modelo del auto</label>
-            <input 
-              type="text" 
-              id="model" 
-              name="model" 
-              value={car.model} 
-              onChange={handleChange} 
-              required 
-            />
-            {errors.model && <span className="error">{errors.model}</span>}
-          </div>
+      <div className='mt-50 mr-50 mb-200 ml-50'>
+        <h1>Agregar coche</h1>
+        {message && <div className="message">{message}</div>}
+        <div className='add-car-form'>
+          <form onSubmit={handleSubmit}>
+            <div className='add-car-input'>
+              <label htmlFor="model">Modelo del coche</label>
+              <input 
+                type="text" 
+                id="model" 
+                name="model" 
+                value={car.model} 
+                onChange={handleChange} 
+                required 
+              />
+              {errors.model && <span className="error">{errors.model}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="category">Categoría del auto</label>
-            <input 
-              type="text" 
-              id="category" 
-              name="category" 
-              value={car.category} 
-              onChange={handleChange} 
-              required 
-            />
-            {errors.category && <span className="error">{errors.category}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="category">Categoría del coche</label>
+              <input 
+                type="text" 
+                id="category" 
+                name="category" 
+                value={car.category} 
+                onChange={handleChange} 
+                required 
+              />
+              {errors.category && <span className="error">{errors.category}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="transmission">Transmisión del auto</label>
-            <input 
-              type="text" 
-              id="transmission" 
-              name="transmission" 
-              value={car.transmission} 
-              onChange={handleChange} 
-              required 
-            />
-            {errors.transmission && <span className="error">{errors.transmission}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="transmission">Transmisión del coche</label>
+              <input 
+                type="text" 
+                id="transmission" 
+                name="transmission" 
+                value={car.transmission} 
+                onChange={handleChange} 
+                required 
+              />
+              {errors.transmission && <span className="error">{errors.transmission}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="dailyRentalCost">Costo alquiler por día</label>
-            <input 
-              type="number" 
-              id="dailyRentalCost" 
-              name="dailyRentalCost" 
-              value={car.dailyRentalCost} 
-              onChange={handleChange} 
-              required 
-            />
-            {errors.dailyRentalCost && <span className="error">{errors.dailyRentalCost}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="dailyRentalCost">Costo alquiler por día</label>
+              <input 
+                type="number" 
+                id="dailyRentalCost" 
+                name="dailyRentalCost" 
+                value={car.dailyRentalCost} 
+                onChange={handleChange} 
+                required 
+              />
+              {errors.dailyRentalCost && <span className="error">{errors.dailyRentalCost}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="description">Descripción del auto</label>
-            <textarea 
-              id="description" 
-              name="description" 
-              value={car.description} 
-              onChange={handleChange} 
-              required 
-            />
-            {errors.description && <span className="error">{errors.description}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="description">Descripción del coche</label>
+              <textarea 
+                id="description" 
+                name="description" 
+                value={car.description} 
+                onChange={handleChange} 
+                required 
+              />
+              {errors.description && <span className="error">{errors.description}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="mainPhoto">Foto principal</label>
-            <input 
-              type="file" 
-              id="mainPhoto" 
-              name="mainPhoto" 
-              onChange={handleFileChange} 
-              required 
-            />
-            {errors.mainPhoto && <span className="error">{errors.mainPhoto}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="mainPhoto">Foto principal</label>
+              <input 
+                type="file" 
+                id="mainPhoto" 
+                name="mainPhoto" 
+                onChange={handleFileChange} 
+                required 
+              />
+              {errors.mainPhoto && <span className="error">{errors.mainPhoto}</span>}
+            </div>
 
-          <div className='add-car-input'>
-            <label htmlFor="gallery">Galería de fotos</label>
-            <input 
-              type="file" 
-              id="gallery" 
-              name="gallery" 
-              multiple 
-              onChange={handleFileChange} 
-            />
-            {errors.gallery && <span className="error">{errors.gallery}</span>}
-          </div>
+            <div className='add-car-input'>
+              <label htmlFor="gallery">Galería de fotos</label>
+              <input 
+                type="file" 
+                id="gallery" 
+                name="gallery" 
+                multiple 
+                onChange={handleFileChange} 
+              />
+              {errors.gallery && <span className="error">{errors.gallery}</span>}
+            </div>
 
-          <button className='button primary-button' type="submit">Agregar carro</button>
-        </form>
+            <button className='button primary-button' type="submit">Agregar coche</button>
+          </form>
+        </div>
       </div>
     </>
   );
