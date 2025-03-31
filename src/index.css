@@ -1,96 +1,263 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ================================
+    🌈 Variables Globales
+   ================================ */
+
+   :root {
+    /* Colores */
+    --color-primary: #D32F2F;
+    --color-secondary: #212121;
+    --color-tertiary: #BDBDBD;
+    --color-background: #F5F5F5;
+    --color-white-cream: #ddd;
+    --color-link: #1565C0;
+    --color-disabled: #9E9E9E;
+    --color-white: #FFFFFF;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+
+
+      /* Colores hover */
+  --color-primary-hover: #B71C1C;
+  --color-secondary-hover: #424242;
+  --color-tertiary-hover: #9E9E9E;
+  
+    /* Tipografía */
+    --font-family: "Lato", sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 40px;
+    --font-size-medium: 18px;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+  
+    /* Sombra */
+    --box-shadow: 0px 2px 10px var(--color-shadow);
+  
+    /* Bordes y otros */
+    --border-radius: 5px;
+    --max-width: 1440px;
+  }
+
+  /* ================================
+    ✨ Font Sizes by Breakpoint
+   ================================ */
+
+/* 📱 Mobile (hasta 767px) */
+@media (max-width: 767px) {
+  html {
+    font-size: 14px; /* Base font size */
+  }
+
+  h1 { font-size: 1.75rem; } /* 28px */
+  h2 { font-size: 1.5rem; } /* 24px */
+  h3 { font-size: 1.25rem; } /* 20px */
+  h4 { font-size: 1.125rem; } /* 18px */
+  h5 { font-size: 1rem; } /* 16px */
+  h6 { font-size: 0.875rem; } /* 14px */
+  p  { font-size: 0.875rem; } /* 14px */
+  small { font-size: 0.75rem; } /* 12px */
 }
 
-html {
-  position: relative;
-  min-height: 100vh;
+/* 💻 Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 16px; /* Base font size */
+  }
+
+  h1 { font-size: 2.25rem; } /* 36px */
+  h2 { font-size: 2rem; } /* 32px */
+  h3 { font-size: 1.5rem !important; } /* 28px */
+  h4 { font-size: 1.25rem; } /* 24px */
+  h5 { font-size: 1.125rem; } /* 20px */
+  h6 { font-size: 1.125rem; } /* 18px */
+  p  { font-size: 1rem; } /* 16px */
+  small { font-size: 0.875rem; } /* 14px */
 }
 
-body {
-  min-height: 100vh;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  background-color: #f5f5f5;
+/* 🖥 Desktop (1025px en adelante) */
+@media (min-width: 1025px) {
+  html {
+    font-size: 18px; /* Base font size */
+  }
+
+  h1 { font-size: 3rem; } /* 48px */
+  h2 { font-size: 2.5rem; } /* 40px */
+  /* h3 { font-size: 2.25rem; }  */
+  h4 { font-size: 1.75rem; } /* 28px */
+  h5 { font-size: 1.5rem; } /* 24px */
+  h6 { font-size: 1.25rem; } /* 20px */
+  p  { font-size: 1.125rem; } /* 18px */
+  small { font-size: 1rem; } /* 16px */
+}
+  
+  /* ================================
+      🌍 Global Styles
+     ================================ */
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;          /* Asegura que ocupe toda la altura */
+    margin: 0;
+  }
+
+  .main {
+    min-height: 100vh;    /* Asegura que ocupe toda la altura */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  html {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  body {
+    min-height: 100vh;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-base);
+    background-color: var(--color-background);
+  }
+  
+  h2 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  p {
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-normal);
+    margin: 0;
+  }
+  
+  .main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 100px 20px 50px;
+  }
+
+  @media (min-width: 768px) {
+    .main {
+      padding-top: 150px;
+    }
+  }
+  
+  ul, ol {
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* ================================
+      ✨ Botones
+     ================================ */
+  
+  .button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .primary-button {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .primary-button:hover {
+    background-color: var(--color-primary-hover);
+  }
+  
+  .secondary-button {
+    background-color: var(--color-secondary);
+    color: #fff;
+  }
+
+  .secondary-button:hover {
+    background-color: var(--color-secondary-hover);
+  }
+  
+  .tertiary-button {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+  }
+
+  .tertiary-button:hover {
+    background-color: var(--color-tertiary-hover);
+  }
+  
+  .no-background-button {
+    background: none;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .no-background-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  /* ================================
+      ✨ Utilidades
+     ================================ */
+  
+  .mt-50 {
+    margin-top: 50px;
+  }
+  
+  .mr-50 {
+    margin-right: 50px;
+  }
+
+  .mb-50 {
+    margin-bottom: 50px;
+  }
+  
+  .mb-200 {
+    margin-bottom: 200px;
+  }
+  
+  .ml-50 {
+    margin-left: 50px;
+  }
+  
+/* Formularios */
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-h2 {
-  font-size: 40px;
-  font-weight: 700;
+input {
+  padding: 12px;
+  border: 1px solid var(--color-white-cream);
+  border-radius: 5px;
+  width: 100%;
+  font-size: 0.9rem;
 }
 
-p {
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0;
-}
+/* Mobile hasta 767px */
 
-.main {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 77px 20px 0;
-  /* margin-bottom: 200px; */
-  /* min-height: 100vh; */
-}
+/* Tablet (768px - 1024px) */
+/* @media (min-width: 768px) {
 
-/* .admin {
-  margin-left: 100px;
 } */
 
-ul, ol {
-  padding: 0;
-}
+/* Desktop (1025px en adelante) */
+/* @media (min-width: 1025px) {
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-}
-
-.button {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-weight: bold;
-}
-
-.primary-button {
-  background-color: #D32F2F;
-  color: #fff;
-}
-
-.secondary-button {
-  background-color: #212121;
-  color: #fff;
-}
-
-.tertiary-button {
-  background-color: #BDBDBD;
-}
-
-.no-background-button {
-  outline: 1px solid #D32F2F;
-}
-
-.mt-50 {
-  margin-top: 50px;
-}
-
-.mr-50 {
-  margin-right: 50px;
-}
-
-.mb-200 {
-  margin-bottom: 200px;
-}
-
-.ml-50 {
-  margin-left: 50px;
-}
+} */

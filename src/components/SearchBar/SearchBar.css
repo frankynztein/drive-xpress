@@ -1,49 +1,212 @@
-/* Mobile hasta 767px */
 .search-bar {
   box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  background: var(--color-white);
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
+.search-bar h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.search-bar p {
+  color: var(--color-secondary-hover);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Formulario */
 form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 20px;
-  align-items: center;
+  align-items: flex-end;
   padding: 16px;
-  background: #fff;
-  border-radius: 5px;
 }
 
-button {
-border: none;
-}
-
-.search-bar form button {
-  width: 80%;
-  border-radius: 5px;
-}
-
+/* Inputs */
 .search-bar-input {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-width: 200px;
+  position: relative;
 }
 
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
+.search-bar-input input:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+
+
+/* Selección de fechas */
+.date-picker-button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-/* Tablet (768px - 1024px) */
-@media (min-width: 768px) {
-  .search-bar form button {
-    width: 100px;
+.date-picker-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+.date-picker-button:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+/* Sugerencias */
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-white-cream);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.suggestions-list li:hover {
+  background-color: var(--color-background);
+}
+
+/* Estilos para el modal de fechas */
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: var(--color-background);
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+/* Estilos para el datepicker dentro del modal */
+.react-datepicker {
+  border: none !important;
+  width: 100% !important;
+  font-family: inherit !important;
+}
+
+.react-datepicker__month-container {
+  width: 50% !important;
+  padding: 10px;
+}
+
+.react-datepicker__header {
+  background-color: white !important;
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+
+.react-datepicker__month {
+  margin: 0 !important;
+}
+
+.react-datepicker__current-month {
+  text-transform: capitalize;
+}
+
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: var(--color-background);
+}
+
+.month-title {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.react-datepicker__day {
+  margin: 0.2rem !important;
+  width: 1.8rem !important;
+  line-height: 1.8rem !important;
+  font-size: 0.9rem;
+}
+
+.react-datepicker__day--selected, 
+.react-datepicker__day--in-selecting-range, 
+.react-datepicker__day--in-range {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+.react-datepicker__day-names {
+  margin-top: 5px;
+}
+
+.react-datepicker__day-name {
+  width: 1.8rem !important;
+  margin: 0.2rem !important;
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Estilos para los botones modal */
+.modal-footer {
+  border-top: 1px solid #eee;
+  padding: 15px;
+}
+
+
+@media (max-width: 767px) {
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-bar-input {
+    min-width: 100%;
+  }
+
+  .react-datepicker__month-container {
+    width: 100% !important;
+  }
+  
+  .react-datepicker {
+    flex-direction: column;
   }
 }
 
-/* Desktop (1025px en adelante) */
-@media (min-width: 1025px) {
-
+@media (max-width: 1024px) {
+  .search-bar form button[type="submit"] {
+    width: 100%;
+  }
 }

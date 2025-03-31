@@ -1,6 +1,4 @@
 import './Sidebar.css';
-import CarIcon from '../../assets/car-icon.png';
-import ListIcon from '../../assets/list-icon.png';
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -8,10 +6,12 @@ const Sidebar = () => {
     <>
       <section className='sidebar'>
         <nav>
-          <Link to="/administracion/agregar-coche"><img src={CarIcon} alt="" /></Link>
-          <Link to="/administracion/lista-de-coches"><img src={ListIcon} alt="" /></Link>
+          <Link to="/administracion"><li className="button no-background-button">Panel</li></Link>
           <Link to="/administracion/agregar-coche"><li className="button no-background-button">Agregar coche</li></Link>
-          <Link to="/administracion/lista-de-coches"><li className="button no-background-button">Lista de coches</li></Link>
+          <Link to="/administracion/lista-de-coches"><li className="button no-background-button">Coches</li></Link>
+          <Link to="/administracion/caracteristicas-de-coches"><li className="button no-background-button">Características</li></Link>
+          <Link to="/administracion/categorias-de-coches"><li className="button no-background-button">Categorías</li></Link>
+          <Link to="/administracion/lista-de-usuarios"><li className="button no-background-button">Usuarios</li></Link>
         </nav>
       </section>
     </>

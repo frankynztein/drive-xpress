@@ -4,7 +4,7 @@ import './Categories.css';
 const Categories = () => {
   return (
     <>
-      <h2>Categorías</h2>
+      <h2 className='mb-50'>Categorías</h2>
       <CategoryCard />
     </>
   )

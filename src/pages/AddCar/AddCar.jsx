@@ -3,13 +3,14 @@
 // - Agregar modal o cambiar de ubicación los mensajes de error o éxito del formulario
 
 import './AddCar.css';
-import { useState } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 
 const AddCar = () => {
   const [car, setCar] = useState({
     model: '',
-    category: '',
+    //category: '',
     transmission: '',
     dailyRentalCost: '',
     description: '',
@@ -18,6 +19,26 @@ const AddCar = () => {
   const [gallery, setGallery] = useState([]);
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState({});
+  const [features, setFeatures] = useState([]);
+  const [selectedFeatures, setSelectedFeatures] = useState([]);
+  const [categories, setCategories] = useState([]); 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  const mainPhotoRef = useRef(null);
+  const galleryRef = useRef(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/features", { withCredentials: true })
+      .then((response) => setFeatures(response.data))
+      .catch((error) => console.error("Error fetching features:", error));
+
+      axios
+      .get("http://localhost:8080/api/categories", { withCredentials: true })
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.error("Error fetching categories:", error));
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +57,23 @@ const AddCar = () => {
     }
   };
 
+  
+  const handleFeatureChange = (featureId) => {
+    setSelectedFeatures(prev => 
+        prev.includes(featureId)
+            ? prev.filter(id => id !== featureId)
+            : [...prev, featureId]
+    );
+  };
+
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategories(prev =>
+        prev.includes(categoryId)
+            ? prev.filter(id => id !== categoryId)
+            : [...prev, categoryId]
+    );
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
@@ -45,15 +83,27 @@ const AddCar = () => {
     Object.keys(car).forEach(key => formData.append(key, car[key]));
     if (mainPhoto) formData.append('mainPhoto', mainPhoto);
     gallery.forEach(photo => formData.append('gallery', photo));
+    selectedFeatures.forEach(featureId => formData.append('features', featureId));
+    selectedCategories.forEach(categoryId => formData.append('categories', categoryId));
+    console.log('selected categories', selectedCategories)
 
     try {
       const response = await axios.post('http://localhost:8080/api/cars', formData, {
+        withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setMessage(`Coche registrado exitosamente con ID: ${response.data.id}`);
-      setCar({ model: '', category: '', transmission: '', dailyRentalCost: '', description: '' });
+      setCar({ model: '', transmission: '', dailyRentalCost: '', description: '' });
       setMainPhoto(null);
       setGallery([]);
+      setSelectedFeatures([]);
+      setSelectedCategories([]);
+
+      if (mainPhotoRef.current) mainPhotoRef.current.value = '';
+      if (galleryRef.current) galleryRef.current.value = '';
+
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => checkbox.checked = false);
     } catch (error) {
       if (error.response) {
         if (error.response.status === 409) {
@@ -70,7 +120,7 @@ const AddCar = () => {
   return (
     <>
       <div className='mt-50 mr-50 mb-200 ml-50'>
-        <h1>Agregar coche</h1>
+        <h2>Agregar coche</h2>
         {message && <div className="message">{message}</div>}
         <div className='add-car-form'>
           <form onSubmit={handleSubmit}>
@@ -88,16 +138,23 @@ const AddCar = () => {
             </div>
 
             <div className='add-car-input'>
-              <label htmlFor="category">Categoría del coche</label>
-              <input 
-                type="text" 
-                id="category" 
-                name="category" 
-                value={car.category} 
-                onChange={handleChange} 
-                required 
-              />
-              {errors.category && <span className="error">{errors.category}</span>}
+              <label htmlFor="categories">Categorías del coche</label>
+              <div className="category-options">
+                {categories.map((category) => (
+                  <div key={category.id} className='category-item'>
+                    <input
+                      className='form-check-input' 
+                      type="checkbox"
+                      value={category.id}
+                      checked={selectedCategories.includes(category.id)}
+                      onChange={() => handleCategoryChange(category.id)}
+                    />
+                    <label>
+                      {category.title}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className='add-car-input'>
@@ -146,6 +203,7 @@ const AddCar = () => {
                 name="mainPhoto" 
                 onChange={handleFileChange} 
                 required 
+                ref={mainPhotoRef}
               />
               {errors.mainPhoto && <span className="error">{errors.mainPhoto}</span>}
             </div>
@@ -158,8 +216,30 @@ const AddCar = () => {
                 name="gallery" 
                 multiple 
                 onChange={handleFileChange} 
+                ref={galleryRef}
               />
               {errors.gallery && <span className="error">{errors.gallery}</span>}
+            </div>
+
+            <div className="add-car-input">
+              <h5>Características</h5>
+              <div className="feature">
+                {features.map((feature) => (
+                  <div key={feature.id} className='feature-item'>
+                    <input 
+                      className='form-check-input' 
+                      type="checkbox" 
+                      id={feature.name}
+                      checked={selectedFeatures.includes(feature.id)}
+                      onChange={() => handleFeatureChange(feature.id)}
+                    />
+                    <label htmlFor={feature.name}>
+                      <i className={`${feature.icon} feature-icon`}></i>
+                      {feature.name}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <button className='button primary-button' type="submit">Agregar coche</button>

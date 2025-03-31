@@ -1,6 +1,6 @@
 .admin-layout {
   display: flex;
-  /* height: 90vh; */
+  margin-left: 180px;
 }
 
 .admin-inner-pages {

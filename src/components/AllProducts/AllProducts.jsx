@@ -3,6 +3,7 @@
 // - Mejorar el aspecto de esta sección o del card
 
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AllProducts.css';
 
 const AllProducts = () => {
@@ -10,6 +11,7 @@ const AllProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const productsPerPage = 10;
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
@@ -36,22 +38,26 @@ const AllProducts = () => {
 
   return (
     <div className='all-products'>
-      <h2>Todos los productos</h2>
+      <h2 className='mb-50'>Todos los productos</h2>
       <div className="product-list">
         {getCurrentProducts().map((product) => (
-          <div key={product.id} className="product-item">
+          <div 
+            key={product.id} 
+            className="product-item"
+            onClick={() => navigate(`/detalles/${product.model}`)}
+            style={{ cursor: 'pointer' }}
+          >
             <img src={`http://localhost:8080/uploads/${product.mainPhotoUrl}`} alt={product.model} />
             <h3>{product.model}</h3>
-            <p>Precio por día: ${product.dailyRentalCost}</p>
           </div>
         ))}
       </div>
       <div className="pagination">
-        <button onClick={() => paginate(1)} disabled={currentPage === 1}>Inicio</button>
-        <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
+        <button className='button' onClick={() => paginate(1)} disabled={currentPage === 1}>Inicio</button>
+        <button className='button' onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>Anterior</button>
         <span>{currentPage} de {totalPages}</span>
-        <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>Siguiente</button>
-        <button onClick={() => paginate(totalPages)} disabled={currentPage === totalPages}>Último</button>
+        <button className='button' onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>Siguiente</button>
+        <button className='button' onClick={() => paginate(totalPages)} disabled={currentPage === totalPages}>Último</button>
       </div>
     </div>
   );

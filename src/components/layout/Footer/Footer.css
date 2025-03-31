@@ -1,10 +1,9 @@
-/* Mobile hasta 767px */
 .footer-wrapper {
   background-color: #D32F2F;
   width: 100%;
-  position: absolute;
-  /* bottom: 0; */
-  /* margin-top: 50px; */
+  bottom: 0; 
+  left: 0;
+  z-index: 100; 
 }
 
 .footer {
@@ -17,6 +16,7 @@
   padding: 20px 20px;
   font-size: 14px;
   color: #ffffff;
+  position: sticky;
 }
 
 .section-logo {
@@ -60,9 +60,4 @@
   .footer-links {
     column-gap: 20px;
   }
-}
-
-/* Desktop (1025px en adelante) */
-@media (min-width: 1025px) {
-
 }

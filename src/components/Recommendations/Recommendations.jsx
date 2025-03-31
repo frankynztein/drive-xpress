@@ -4,7 +4,7 @@ import './Recommendations.css';
 const Recommendations = () => {
   return (
     <>
-      <h2>Recomendaciones</h2>
+      <h2 className='mb-50'>Recomendaciones</h2>
       <RecommendationCard />
     </>
   )

@@ -20,7 +20,6 @@ const RecommendationCard = () => {
                 }
                 const data = await response.json();
 
-                // Obtener elementos aleatorios de array
                 const getRandom = (arr, n) => {
                     let result = new Array(n);
                     let len = arr.length;
@@ -35,7 +34,6 @@ const RecommendationCard = () => {
                     return result;
                 }
 
-                // 10 recomendaciones aleatorias
                 const randomRecommendations = getRandom(data, Math.min(10, data.length));
 
                 setRecommendations(randomRecommendations);
@@ -57,26 +55,28 @@ const RecommendationCard = () => {
             <div className='recomm-card-wrapper'>
                 {recommendations.map((car) => {
                     return (
-                        <div className='recomm-card' key={car.id}>
-                            <div className='recomm-card-img'>
-                                <img src={`http://localhost:8080/uploads/${car.mainPhotoUrl}`} alt={car.model} />
-                            </div>
-                            <div className='recomm-card-info'>
-                                <div className='recomm-card-info--car'>
-                                    <h3>{car.model}</h3>
-                                    <p><span>{car.category}</span> <span>{car.transmission}</span></p>
+                        <>
+                            <Link to={`/detalles/${car.model}`}>
+                                <div className='recomm-card' key={car.id}>
+                                    <div className='recomm-card-img'>
+                                        <img src={`http://localhost:8080/uploads/${car.mainPhotoUrl}`} alt={car.model} />
+                                    </div>
+                                    <div className='recomm-card-info'>
+                                        <div className='recomm-card-info--car'>
+                                            <h3>{car.model}</h3>
+                                            <p>{car.transmission}</p>
+                                        </div>
+                                        <div className='recomm-card-info--rent'>
+                                            <p>Kilómetros ilimitados disponibles</p>
+                                            <p><span>{car.dailyRentalCost} €/día</span></p>
+                                        </div>
+                                    </div>
+                                    <div className='recomm-card-button'>
+                                            <button className='button primary-button'>Seleccionar</button>
+                                    </div>
                                 </div>
-                                <div className='recomm-card-info--rent'>
-                                    <p>Kilómetros ilimitados disponibles</p>
-                                    <p><span>$ {car.dailyRentalCost}/día</span></p>
-                                </div>
-                            </div>
-                            <div className='recomm-card-button'>
-                                <Link to={`/detalles/${car.model}`}>
-                                    <button className='button primary-button'>Seleccionar</button>
-                                </Link>
-                            </div>
-                        </div>
+                            </Link>
+                        </>
                     );
                 })}
             </div>

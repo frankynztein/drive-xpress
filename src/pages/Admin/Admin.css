@@ -7,7 +7,6 @@
   display: none;
 }
 
-
 /* Tablet (768px - 1024px) */
 @media (min-width: 768px) {
 
@@ -29,5 +28,19 @@
 
   .admin-content {
     display: block;
+    width: 100%;
+  }
+
+  .admin-content-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin-content-buttons a {
+    width: 250px;
   }
 }
